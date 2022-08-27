@@ -3,7 +3,7 @@ from datetime import date
 import db
 from domain import *
 from bottle import route, run, template, view, redirect, request
-
+import os
 
 #db.napolni()
 db.load()
@@ -85,4 +85,4 @@ def ustvari_opravilo(full_name):
 def index():
     return {"uporabniki": db.uporabniki}
 
-run(reloader=True, host='localhost', port=8080)
+run(reloader=True, host='localhost', port=os.environ.get('PORT', 8080))
