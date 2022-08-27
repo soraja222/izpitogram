@@ -9,15 +9,15 @@ def napolni():
     global uporabniki
 
     # Janez
-    o1 = Opravilo("Izpit", Datum(2020, 5, 24), False)
-    o2 = Opravilo("Izpit", Datum(2020, 7, 24), False)
+    o1 = Opravilo("Izpit", Datum(2020, 5, 24), False, "Izpit")
+    o2 = Opravilo("Izpit", Datum(2020, 7, 24), False, "Izpit")
     p1 = Predmet("Matematika", 1, [o1, o2])
     janez = Uporabnik("Janez", "Novak", Smeri.fm, [p1])
     uporabniki.append(janez)
 
     # Marko
-    o1 = Opravilo("Izpit", Datum(2020, 8, 24), False)
-    o2 = Opravilo("Izpit", Datum(2020, 9, 24), False)
+    o1 = Opravilo("Izpit", Datum(2020, 8, 24), False, "Seminarska naloga")
+    o2 = Opravilo("Izpit", Datum(2020, 9, 24), False, "Izpit")
     p1 = Predmet("Fizika", 1, [o1, o2])
     Marko = Uporabnik("Marko", "Novak", Smeri.sm, [p1])
     uporabniki.append(Marko)
