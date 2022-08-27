@@ -1,11 +1,11 @@
 
-
+from datetime import date
 import db
 from domain import *
 from bottle import route, run, template, view, redirect, request
-"""
-url metode je informacija kaj ho;e uporabnik narediti na routu, POST: ustvariti informacije, PUT: spremeniti informacije, GET: dobiti informacije, DELETE: izbris...
-"""
+
+
+#db.napolni()
 db.load()
 
 def uporabnik_find(full_name):
@@ -19,14 +19,27 @@ def uporabnik_find(full_name):
 def uporabnik(full_name):
 
     uporabnik = uporabnik_find(full_name)
+    if uporabnik is None:
+        redirect('/')
+
     opravila = []
     for predmet in uporabnik.predmeti:
         for opravilo in predmet.opravila:
-            opravila.append(opravilo)
+            if opravilo.opravljen not in ['True', True, 1, '1']:
+                opravila.append(opravilo)
 
-
-    return {'uporabnik': uporabnik, 'predmeti': uporabnik.predmeti, 'opravila': opravila, 'opravilo_action': f'/uporabniki/{full_name}/opravilo', 'predmet_action': f'/uporabniki/{full_name}/predmet'}
-    redirect('/')
+    now = date.today()
+    return {
+        'uporabnik': uporabnik,
+        'predmeti': uporabnik.predmeti,
+        'opravila': opravila,
+        'opravilo_action': f'/uporabniki/{full_name}/opravilo',
+        'predmet_action': f'/uporabniki/{full_name}/predmet',
+        'leto': now.year,
+        'mesec': now.month,
+        'dan': now.day
+    }
+    
     
 @route("/uporabniki", "POST")
 @view('uporabnik_submit')
@@ -36,7 +49,16 @@ def ustvari_upoabnika():
     db.save()
     return info
 
-    
+
+@route("/uporabniki/<full_name>/predmet/<predmet>/opravilo/<opravilo>/opravljen")
+def opravilo_opravil(full_name, predmet, opravilo):
+    uporabnik = uporabnik_find(full_name)
+    predmet = uporabnik.predmeti[int(predmet)]
+    opr = predmet.opravila[int(opravilo)]
+    opr.opravljen = True
+    db.save()
+    redirect(f"/uporabniki/{full_name}")
+
 @route("/uporabniki/<full_name>/predmet", "POST")
 @view('predmet_submit')
 def ustvari_predmet(full_name):
@@ -53,7 +75,7 @@ def ustvari_opravilo(full_name):
     uporabnik = uporabnik_find(full_name)
     info = dict(request.forms)
     index_predmeta = int(info['predmet'])
-    uporabnik.predmeti[index_predmeta].opravila.append(Opravilo(info['ime'], info['rok'], False))
+    uporabnik.predmeti[index_predmeta].opravila.append(Opravilo(info['ime'], Datum(info['leto'], info['mesec'], info['dan']), False, info['tip_obveznosti']))
     db.save()
     info['back'] = f'/uporabniki/{full_name}'
     return info
