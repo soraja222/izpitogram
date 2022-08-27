@@ -1,2 +1,1 @@
-web: pip install bottle
 web: python src/main.py 
