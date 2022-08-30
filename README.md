@@ -27,3 +27,15 @@ Le-ta te bo preusmeril na spletni vmesnik na [lokalnem naslovu](http://localhost
 # Objava spletne strani
 
 Za javni dostop aplikacije lahkouporabnik obišče spletno stran https://izpitogram.herokuapp.com/.
+
+
+# Linki do pomembnih povezav
+
+* https://devcenter.heroku.com/articles/getting-started-with-python
+* https://devcenter.heroku.com/articles/github-integration
+* https://getbootstrap.com/docs/5.2/getting-started/introduction/#quick-start
+* https://bottlepy.org/docs/dev/tutorial.html#templates
+* https://bottlepy.org/docs/dev/tutorial.html#http-errors-and-redirects
+* https://bottlepy.org/docs/dev/tutorial.html#http-request-methods
+* https://docs.python.org/3/library/pickle.html#pickle.dumps
+* https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
