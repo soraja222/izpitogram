@@ -13,6 +13,13 @@ opravi določeno obveznost, jo lahko s seznama opravil odstrani z klikom na gumb
 
 # Zagon programa
 
-Strežnik se požene z ukazom Run Python File in Terminal v datoteki main.py.
+```
+# pip -> python installation packager (instalira zunanje knjiznice)
+pip install -r requirements.txt
+python src/main.py
+```
 
-Le-ta te bo preusmeril na spletni vmesnik na [naslovu]()
+Podatkovna baza se pri vsaki spremembi shranjuje v database.bin. 
+Ta datoteka se ustvari s python knjižnico pickle.
+
+Le-ta te bo preusmeril na spletni vmesnik na [lokalnem naslovu](http://localhost:8080).

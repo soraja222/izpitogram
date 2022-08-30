@@ -1,3 +1,8 @@
+'''
+modul za podatkovno bazo
+notri se nahaja podatkovna struktura za shranjevanje podatkov in vse funkcije za manipulacijo podatkovne baze
+'''
+
 from datetime import date
 from domain import *
 import pickle
@@ -6,6 +11,10 @@ import os
 uporabniki = []
 
 def napolni():
+    '''
+    to je funkcija, ki ustvari začetno drevesno strukturo domenskega prostora, ki bo predstavljal podatkovno bazo
+    vsa podatkovna baza je zbrana v uporabniki
+    '''
     global uporabniki
 
     # Janez
@@ -23,11 +32,17 @@ def napolni():
     uporabniki.append(Marko)
 
 def save():
+    '''
+    shranjevanje podatkovne strukture v binarni zapis
+    '''
     global uporabniki
     with open('database.bin', 'wb') as file:
         pickle.dump(uporabniki, file)
 
 def load():
+    '''
+    branje podatkovne strukture iz binarnega zapisa
+    '''
     global uporabniki
     if os.path.exists('database.bin'):
         with open('database.bin', 'rb') as file:
