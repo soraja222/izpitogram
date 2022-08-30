@@ -113,4 +113,4 @@ def index():
     '''
     return {"uporabniki": db.uporabniki}
 
-run(host='localhost', port=os.environ.get('PORT', 8080)) #tukaj se server požene na portu 8080 ali na portu, ki je posredovan preko sistemske spremenljivke
+run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080))) #tukaj se server požene na portu 8080 ali na portu, ki je posredovan preko sistemske spremenljivke
