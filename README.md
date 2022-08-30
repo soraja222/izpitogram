@@ -23,3 +23,7 @@ Podatkovna baza se pri vsaki spremembi shranjuje v database.bin.
 Ta datoteka se ustvari s python knjižnico pickle.
 
 Le-ta te bo preusmeril na spletni vmesnik na [lokalnem naslovu](http://localhost:8080).
+
+# Objava spletne strani
+
+Za javni dostop aplikacije lahkouporabnik obišče spletno stran https://izpitogram.herokuapp.com/.
