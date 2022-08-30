@@ -1,8 +1,10 @@
 % include('head.tpl')
 
 <h1>{{uporabnik.ime}} {{uporabnik.priimek}}</h1>
-
 <div class="row">
+
+<!--- stolpec kjer uporabnik ustvari predmet ------------------------------------------------------------------------------------------------->
+
 <div class="col-3">
 <h2>Ustvari predmet</h2>
     <form action="{{predmet_action}}" method="POST">
@@ -22,6 +24,9 @@
         <button type="submit" class="btn btn-primary w-100">Potrdi</button>
     </form>
 </div>
+
+<!---- stolpec za prikazovanje predmetov in njihovih opravil ---------------------------------------------------->
+
 <div class="col-3">
 <h3>Predmeti</h3>
 <hr>
@@ -34,6 +39,9 @@
         % end
 % end
 </div>
+
+<!---- stolpec za prikazovanje vseh opravil ----------------------------------------------------------------------------->
+
 
 <div class="col-3">
     <h3>Opravila</h3>
@@ -56,6 +64,7 @@
     </div>
 </div>
 
+<!--- stolpec kjer uporabnik ustvari opravilo ------------------------------------------------------------------------------------------------->
 
 
 <div class="col-3">
